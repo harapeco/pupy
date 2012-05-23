@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Browser" id="1" y="8" width="545" height="345" text="Browser&#xA;http://..." measuredWidth="545" measuredHeight="345"/>
+  <widgets xsi:type="model:Panel" id="2" x="16" y="128" width="160" height="207" measuredWidth="160" measuredHeight="207"/>
+  <widgets xsi:type="model:Panel" id="3" x="192" y="128" width="161" height="207" measuredWidth="161" measuredHeight="207"/>
+  <widgets xsi:type="model:Panel" id="4" x="368" y="128" width="161" height="207" measuredWidth="161" measuredHeight="207"/>
+  <widgets xsi:type="model:Label" id="5" x="12" y="70" width="61" text="naratiff" measuredWidth="61" measuredHeight="55" textAlignment="Center" icon="image (large)" iconPosition="top">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:SearchField" id="6" x="464" y="70" text="Search" measuredWidth="65" measuredHeight="24">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:VScrollbar" id="7" x="502" y="138" height="187" measuredWidth="17" measuredHeight="187"/>
+  <widgets xsi:type="model:VScrollbar" id="8" x="326" y="138" height="187" measuredWidth="17" measuredHeight="187"/>
+  <widgets xsi:type="model:VScrollbar" id="9" x="149" y="138" height="187" measuredWidth="17" measuredHeight="187"/>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

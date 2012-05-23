@@ -1,0 +1,4 @@
+{
+	"GET /": "user.index"
+	,"GET /post": "user.post"
+};
