@@ -2,32 +2,30 @@
 var express = require('express')
   ,Sequelize = require('sequelize')
   ,myrouter = require('myrouter')
-  ,fs = require('fs');
+  ,fs = require('fs')
+  ,Sequelize = require('sequelize');
+
 
 // Define constants
-var ROOT = __dirname + '/'
-,CONFPATH = ROOT + 'config/'
-,ROUTEPATH = ROOT + 'routes/'
-,DOCROOT = ROOT + 'public/';
+ROOT = __dirname + '/';
+CONFPATH = ROOT + 'config/';
+ROUTEPATH = ROOT + 'routes/';
+MODELPATH = ROOT + 'models/';
+DOCROOT = ROOT + 'public/';
 
 // Set values
-var app = module.exports = express.createServer();
-/*
-var routesMap = {
-	"GET /": "user.index"
-	,"GET /post": "user.post"
-};
-*/
-var routesMap;
-fs.readFileSync(CONFPATH + 'routes.json', 'utf-8', function(err, data) {
-	console.log(data);
-	if (err) throw err;
-	routesMap = data;
-});
-console.log('map data is.');
-console.log(routesMap);
-var routesDir = __dirname + '/routes';
-
+var app = module.exports = express.createServer()
+	,routesDir = __dirname + '/routes'
+	,routesMap = JSON.parse(fs.readFileSync(CONFPATH + 'routes.json', 'utf-8'));
+sequelize = new Sequelize(
+		'node',
+		'node',
+		'node',
+		{
+			host: 'localhost',
+			port: 3306
+		}
+	);
 
 // Configuration
 app.configure(function(){
@@ -44,7 +42,6 @@ app.configure('development', function(){
 app.configure('production', function(){
   app.use(express.errorHandler());
 });
-
 // Routes
 myrouter.map(app, routesMap, routesDir);
 //app.get('/', routes.index);
