@@ -1,0 +1,12 @@
+{
+	"db": {
+		"host": "localhost",
+		"post": "3306",
+		"user": "node",
+		"pass": "node",
+		"name": "node"
+	},
+	"date": {
+		"format": "YYYY/MM/DD HH24:MI:SS"
+	}
+}

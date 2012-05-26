@@ -1,33 +1,30 @@
+var dateUtils = require('date-utils')
+	,config = require('config');
 
-exports.index = function(req, res) {
+exports.index = function(req, res){
 	var Post = sequelize.import(MODELPATH + 'post');
-	Post.findAll({
-		where: {id: ['id > ?', 1]}
-	}).success(function(data){
-		res.render('user/index', {
-			title: 'Pichiku',
-			data: data
-		});
-	}).error(function(err){
-		throw err;
-	});
-};
-
-exports.post = function(req, res) {
-	var Post = sequelize.import(MODELPATH + 'post');
-	var post = Post.build({body: req.body.body});
-	post.save()
-		.success(function(){
+	Post.findAll()
+		.success(function(data){
+			data.forEach(function(val) {
+				val.createdAt = (new Date(val.createdAt)).toFormat(config.date.format);
+			});
+			res.render('user/index', {
+				title: 'Pichiku',
+				data: data
+			});
 		})
 		.error(function(err){
 			throw err;
 		});
-	Post.findAll()
+};
+
+exports.post = function(req, res){
+	var Post = sequelize.import(MODELPATH + 'post');
+	var post = Post.build({body: req.body.body});
+	post.save()
 		.success(function(data){
-			res.render('user/index', {
-				title: 'Pichiku',
-				data: data
-			});			
+			data.createdAt = (new Date(data.createdAt)).toFormat(config.date.format);
+			res.send(JSON.stringify(data));
 		})
 		.error(function(err){
 			throw err;

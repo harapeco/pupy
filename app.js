@@ -3,8 +3,8 @@ var express = require('express')
   ,Sequelize = require('sequelize')
   ,myrouter = require('myrouter')
   ,fs = require('fs')
-  ,Sequelize = require('sequelize');
-
+  ,Sequelize = require('sequelize')
+  ,config = require('config');
 
 // Define constants
 ROOT = __dirname + '/';
@@ -18,12 +18,12 @@ var app = module.exports = express.createServer()
 	,routesDir = __dirname + '/routes'
 	,routesMap = JSON.parse(fs.readFileSync(CONFPATH + 'routes.json', 'utf-8'));
 sequelize = new Sequelize(
-		'node',
-		'node',
-		'node',
+		config.db.name,
+		config.db.user,
+		config.db.pass,
 		{
-			host: 'localhost',
-			port: 3306
+			host: config.db.host,
+			port: config.db.port
 		}
 	);
 
@@ -42,6 +42,7 @@ app.configure('development', function(){
 app.configure('production', function(){
   app.use(express.errorHandler());
 });
+
 // Routes
 myrouter.map(app, routesMap, routesDir);
 //app.get('/', routes.index);

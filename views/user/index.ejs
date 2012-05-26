@@ -1,11 +1,16 @@
 <h1><%= title %></h1>
 <p>Welcome to <%= title %></p>
 <form name="post" method="POST" action="/">
- <input type="text" name="body" value="" />
- <input type="submit" name="send" value="送信" />
+	<input id="body" type="text" name="body" value="" />
+	<input type="button" name="send" value="送信" onclick="postStream('/', $(body))" />
 </form>
+<div id="postedContainer">
 <% if (data) { %>
- <% for(var key in data) { %>
-  <%= data[key].body %><br />
+<% for(var key in data) { %>
+	<div class="postedStream">
+		<%= data[key].body %><br />
+		<%= data[key].createdAt %>
+  	</div>
  <% } %>
 <% } %>
+</div>
