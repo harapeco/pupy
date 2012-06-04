@@ -8,5 +8,8 @@
 	},
 	"date": {
 		"format": "YYYY/MM/DD HH24:MI:SS"
+	},
+	"session": {
+		"secret": "falktajlk4198417598"
 	}
 }

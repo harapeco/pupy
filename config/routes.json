@@ -1,4 +1,8 @@
 {
 	"GET /": "user.index"
-	,"POST /": "user.post"
+	,"GET /login": "user.login"
+	,"POST /login": "user.auth"
+	,"POST /": "post.add"
+	,"GET /signup": "user.signup"
+	,"POST /signup": "user.add"
 }

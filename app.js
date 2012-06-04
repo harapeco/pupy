@@ -31,6 +31,10 @@ sequelize = new Sequelize(
 app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
+  app.use(express.cookieParser());
+  app.use(express.session({
+	  secret: config.session.secret
+  }));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
@@ -42,10 +46,14 @@ app.configure('development', function(){
 app.configure('production', function(){
   app.use(express.errorHandler());
 });
+app.dynamicHelpers({
+	session: function(req, res){
+		return req.session;
+	}
+});
 
 // Routes
 myrouter.map(app, routesMap, routesDir);
-//app.get('/', routes.index);
 
 // Listen request
 app.listen(3000, function(){
